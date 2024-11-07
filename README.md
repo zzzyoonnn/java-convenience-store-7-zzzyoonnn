@@ -42,7 +42,7 @@
 ## 입출력 요구 사항
 ### 입력
 - 구현에 필요한 상품 목록과 행사 목록을 파일 입출력을 통해 불러온다. 
-  - `src/main/resources/products.md과 `src/main/resources/promotions.md` 파일을 이용한다.
+  - `src/main/resources/products.md`과 `src/main/resources/promotions.md` 파일을 이용한다.
   - 두 파일 모두 내용의 형식을 유지한다면 값은 수정할 수 있다. 
 - 구매할 상품과 수량을 입력 받는다. 상품명, 수량은 하이픈(-)으로, 개별 상품은 대괄호([])로 묶어 쉼표(,)로 구분한다.
 ````
@@ -281,6 +281,8 @@ N
     - 재고가 확인되지 않았을 경우
 
 ## 기능 구현 목록
+- initialize
+  - 편의점 POS 프로그램을 실행시킨다.
 - hasProductsFile
   - `products.md` 파일이 존재하는지 확인한다.
 - hasPromotionsFile
