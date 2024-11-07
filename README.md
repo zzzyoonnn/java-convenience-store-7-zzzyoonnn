@@ -274,8 +274,20 @@ N
 ````
 
 ## 예외 상황
+- 재고 관리
+  - 재고가 확인되지 않았을 경우
 
 ## 기능 구현 목록
+- createInventoryInformation
+  - 재고관리 객체를 생성한다.
+- isNullInventory
+  - 재고관리 객체가 존재하는지 확인한다.
+- displayWelcomeGreeting
+  - 편의점 환영인사를 출력한다.
+- getInventoryInformation
+  - 재고관리 정보를 가져온다.
+- displayInventoryInformation
+  - 재고관리 정보를 출력한다.
 
 ## 로직
 1. 편의점 환영인사 출력하기
