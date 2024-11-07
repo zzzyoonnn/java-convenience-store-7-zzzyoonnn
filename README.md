@@ -275,12 +275,16 @@ N
 
 ## 예외 상황
 - 재고 관리
-  - `products.md` 파일을 찾지 못했을 경우
-  - 재고가 확인되지 않았을 경우
+  - 사용자 입력 전(종료)
+    - `products.md` 파일을 찾지 못했을 경우
+    - `promotions.md` 파일을 찾지 못했을 경우
+    - 재고가 확인되지 않았을 경우
 
 ## 기능 구현 목록
 - hasProductsFile
-  - `products.md` 파일이 있는지 확인한다.
+  - `products.md` 파일이 존재하는지 확인한다.
+- hasPromotionsFile
+  - `promotions.md` 파일이 존재하는지 확인한다.
 - createInventoryInformation
   - 재고관리 객체를 생성한다.
 - isNullInventory
