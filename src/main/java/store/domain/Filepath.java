@@ -1,7 +1,7 @@
 package store.domain;
 
 import java.io.File;
-import store.message.PosErrorMessage;
+import store.message.PathErrorMessage;
 
 public class Filepath {
     private final String productPath;
@@ -14,14 +14,14 @@ public class Filepath {
 
     public String getProductPath() {
         if (!hasProductsFile(productPath)) {
-            throw new RuntimeException(PosErrorMessage.IS_NOT_EXISTENCE_OF_PRODUCTS_FILE.getMessage());
+            throw new RuntimeException(PathErrorMessage.IS_NOT_EXISTENCE_OF_PRODUCTS_FILE.getMessage());
         }
         return productPath;
     }
 
     public String getPromotionPath() {
         if (!hasProductsFile(promotionPath)) {
-            throw new RuntimeException(PosErrorMessage.IS_NOT_EXISTENCE_OF_PRODUCTS_FILE.getMessage());
+            throw new RuntimeException(PathErrorMessage.IS_NOT_EXISTENCE_OF_PRODUCTS_FILE.getMessage());
         }
         return promotionPath;
     }
