@@ -16,6 +16,15 @@ public class PosMachineController {
         Filepath filepath = new Filepath("src/main/resources/products.md", "src/main/resources/promotions.md");
 
         createProductInformation(filepath.getProductPath());
+        createPromotionInformation(filepath.getPromotionPath());
+    }
+
+    public static List<Promotion> createPromotionInformation(String productsPath) {
+        List<Promotion> promotions = new ArrayList<>();
+
+        // md파일 읽는 과정
+
+        return promotions;
     }
 
     public static List<Product> createProductInformation(String productsPath) {
