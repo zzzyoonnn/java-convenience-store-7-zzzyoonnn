@@ -1,28 +1,27 @@
 package store.domain;
 
-import static store.message.ErrorMessage.IS_NOT_EXISTENCE_OF_PRODUCTS_FILE;
-
 import java.io.File;
+import store.message.PosErrorMessage;
 
 public class Filepath {
     private final String productPath;
     private final String promotionPath;
 
-    Filepath(String productPath, String promotionPath) {
-        this.productPath = "src/main/resources/products.md";
-        this.promotionPath = "src/main/resources/promotions.md";
+    public Filepath(String productPath, String promotionPath) {
+        this.productPath = productPath;
+        this.promotionPath = promotionPath;
     }
 
     public String getProductPath() {
         if (!hasProductsFile(productPath)) {
-            throw new RuntimeException(IS_NOT_EXISTENCE_OF_PRODUCTS_FILE.getMessage());
+            throw new RuntimeException(PosErrorMessage.IS_NOT_EXISTENCE_OF_PRODUCTS_FILE.getMessage());
         }
         return productPath;
     }
 
     public String getPromotionPath() {
         if (!hasProductsFile(promotionPath)) {
-            throw new RuntimeException(IS_NOT_EXISTENCE_OF_PRODUCTS_FILE.getMessage());
+            throw new RuntimeException(PosErrorMessage.IS_NOT_EXISTENCE_OF_PRODUCTS_FILE.getMessage());
         }
         return promotionPath;
     }
