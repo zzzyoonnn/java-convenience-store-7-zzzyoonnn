@@ -287,8 +287,10 @@ N
   - `products.md` 파일이 존재하는지 확인한다.
 - hasPromotionsFile
   - `promotions.md` 파일이 존재하는지 확인한다.
-- createInventoryInformation
-  - 재고관리 객체를 생성한다.
+- createProductInformation
+  - 재고를 확인한다.
+- createPromotionInformation
+  - 프로모션을 확인한다.
 - isNullInventory
   - 재고관리 객체가 존재하는지 확인한다.
 - displayWelcomeGreeting
