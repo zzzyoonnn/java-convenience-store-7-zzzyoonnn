@@ -296,6 +296,8 @@ N
   - 프로모션을 확인한다.
 - registerPromotion
   - 프로모션을 등록한다.
+- welcomeCustomer
+  - 손님이 들어와서 환영한다.
 - displayWelcomeGreeting
   - 편의점 환영인사를 출력한다.
 - getInventoryInformation
