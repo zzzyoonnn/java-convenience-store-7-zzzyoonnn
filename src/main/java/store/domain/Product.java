@@ -14,12 +14,14 @@ public class Product {
         this.quantity = quantity;
         this.promotion = promotion;
     }
-
     @Override
     public String toString() {
         NumberFormat numberFormat = NumberFormat.getNumberInstance();
         String formattedPrice = numberFormat.format(price);
 
-        return name + " " + formattedPrice + "원 " + quantity + "개 " + promotion;
+        String quantityString = String.valueOf(quantity) + "개";
+        if (quantity == 0) quantityString = "재고 없음 ";
+
+        return name + " " + formattedPrice + "원 " + quantityString + (promotion.equals("null") ? "" : " " + promotion);
     }
 }

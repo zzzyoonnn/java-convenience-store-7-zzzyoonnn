@@ -9,32 +9,29 @@ import store.domain.Filepath;
 import store.domain.Product;
 import store.domain.Promotion;
 import store.message.RegistrationErrorMessage;
-import store.view.PosMachineView;
-
 public class PosMachineController {
-    private static List<Product> products;
+    public static List<Product> products;
+    private static List<Promotion> promotions;
 
     public PosMachineController() {
-
     }
 
-    public PosMachineController(List<Product> products) {
+    public PosMachineController(List<Product> products, List<Promotion> promotions) {
         PosMachineController.products = products;
+        PosMachineController.promotions = promotions;
     }
 
     public static void initialize() {
         Filepath filepath = new Filepath("src/main/resources/products.md", "src/main/resources/promotions.md");
 
         products = createProductInformation(filepath.getProductPath());
-        List<Promotion> promotions = createPromotionInformation(filepath.getPromotionPath());
-
+        promotions = createPromotionInformation(filepath.getPromotionPath());
     }
 
-    public static void getInventoryInformation() {
-        if (products != null) {
-        PosMachineView.getInventoryInformation(products);
-        }
-            System.out.println("There are no products in the inventory");
+    public static String getInventoryInformation() {
+        StringBuilder sb = new StringBuilder();
+        products.forEach(product -> sb.append("- ").append(product).append("\n"));
+        return sb.toString();
     }
 
     public static List<Promotion> registerPromotion(List<String> lines) {
