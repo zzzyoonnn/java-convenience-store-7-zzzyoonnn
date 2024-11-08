@@ -7,7 +7,7 @@ public class Promotion {
     private String start_date;
     private String end_date;
 
-    Promotion(String name, int buy, int get, String start_date, String end_date) {
+    public Promotion(String name, int buy, int get, String start_date, String end_date) {
         this.name = name;
         this.buy = buy;
         this.get = get;
