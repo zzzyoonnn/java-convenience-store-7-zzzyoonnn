@@ -5,9 +5,10 @@ public class ConvenienceStoreController {
     static StaffController staffController = new StaffController();
 
     public static void open() {
-        // 재고 관리하기
         posMachineController.initialize();
+        // 재구매 요청 시
         staffController.welcomeCustomer();
+        staffController.requestProductNameAndQuantity();
         // 영수증 출력하기
     }
 }

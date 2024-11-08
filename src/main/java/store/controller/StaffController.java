@@ -1,11 +1,18 @@
 package store.controller;
 
-import store.view.ConvenienceStoreView;
+import camp.nextstep.edu.missionutils.Console;
+import store.view.StaffView;
 import store.view.PosMachineView;
 
 public class StaffController {
     public static void welcomeCustomer() {
-        ConvenienceStoreView.displayWelcomeGreeting();
+        StaffView.displayWelcomeGreeting();
         PosMachineView.getInventoryInformation();
+    }
+
+    public static void requestProductNameAndQuantity() {
+        StaffView.displayRequestProductNameAndQuantity();
+
+        String buyingList = Console.readLine();
     }
 }
