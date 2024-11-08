@@ -294,6 +294,8 @@ N
   - 재고를 등록한다.
 - createPromotionInformation
   - 프로모션을 확인한다.
+- registerPromotion
+  - 프로모션을 등록한다.
 - isNullInventory
   - 재고관리 객체가 존재하는지 확인한다.
 - displayWelcomeGreeting
