@@ -278,7 +278,8 @@ N
   - 사용자 입력 전(종료)
     - `products.md` 파일을 찾지 못했을 경우
     - `promotions.md` 파일을 찾지 못했을 경우
-    - 재고가 확인되지 않았을 경우
+    - `products.md` 파일이 올바른 형식으로 되어있지 않을 경우
+    - `promotions.md` 파일이 올바른 형식으로 되어있지 않을 경우
 
 ## 기능 구현 목록
 - initialize
@@ -289,6 +290,8 @@ N
   - `promotions.md` 파일이 존재하는지 확인한다.
 - createProductInformation
   - 재고를 확인한다.
+- registerProduct
+  - 재고를 등록한다.
 - createPromotionInformation
   - 프로모션을 확인한다.
 - isNullInventory
