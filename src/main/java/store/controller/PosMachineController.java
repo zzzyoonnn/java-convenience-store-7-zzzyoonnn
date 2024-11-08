@@ -9,6 +9,7 @@ import store.domain.Filepath;
 import store.domain.Product;
 import store.domain.Promotion;
 import store.message.RegistrationErrorMessage;
+
 public class PosMachineController {
     public static List<Product> products;
     private static List<Promotion> promotions;
