@@ -15,8 +15,25 @@ public class PosMachineController {
     public static void initialize() {
         Filepath filepath = new Filepath("src/main/resources/products.md", "src/main/resources/promotions.md");
 
-        createProductInformation(filepath.getProductPath());
-        createPromotionInformation(filepath.getPromotionPath());
+        //createPromotionInformation(filepath.getPromotionPath());
+        List<Product> products = createProductInformation(filepath.getProductPath());
+    }
+
+    public static List<Product> registerProduct(List<String> lines) {
+        List<Product> products = new ArrayList<>();
+
+        try {
+            for (int currentLine = 1; currentLine < lines.size(); currentLine++) {
+                String[] content = lines.get(currentLine).split(",");
+                Product product = new Product(content[0], Integer.parseInt(content[1].trim()),
+                        Integer.parseInt(content[2].trim()), content[3].trim());
+                products.add(product);
+            }
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(RegistrationErrorMessage.IS_INVALID_FORMAT.getMessage());
+        }
+
+        return products;
     }
 
     public static List<Promotion> createPromotionInformation(String productsPath) {
@@ -28,28 +45,11 @@ public class PosMachineController {
     }
 
     public static List<Product> createProductInformation(String productsPath) {
-        List<Product> products = new ArrayList<>();
-
         try {
             List<String> lines = Files.readAllLines(Paths.get(productsPath));
-
-            for (int i = 1; i < lines.size(); i++) {
-                String line = lines.get(i);
-                System.out.println(line);
-                String[] fields = line.split(",");
-
-                String name = fields[0];
-                int price = Integer.parseInt(fields[1].trim());
-                int quantity = Integer.parseInt(fields[2].trim());
-                String promotion = fields[3].trim();
-
-                Product product = new Product(name, price, quantity, promotion);
-                products.add(product);
-            }
+            return registerProduct(lines);
         } catch (IOException e) {
-            throw new RuntimeException(RegistrationErrorMessage.IS_INVALID_FORMAT.getMessage());
+            throw new RuntimeException(RegistrationErrorMessage.CANNOT_READ_FILE.getMessage());
         }
-
-        return products;
     }
 }
