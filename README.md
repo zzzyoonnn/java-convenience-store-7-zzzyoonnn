@@ -296,14 +296,22 @@ N
   - 프로모션을 확인한다.
 - registerPromotion
   - 프로모션을 등록한다.
-- isNullInventory
-  - 재고관리 객체가 존재하는지 확인한다.
 - displayWelcomeGreeting
   - 편의점 환영인사를 출력한다.
 - getInventoryInformation
-  - 재고관리 정보를 가져온다.
+  - 재고 정보를 가져온다.
 - displayInventoryInformation
-  - 재고관리 정보를 출력한다.
+  - 재고 정보를 출력한다.
+- requestProductNameAndQuantity
+  - 구매할 상품과 수량을 입력 받는다.
+- isValidString
+  - 입력 양식에 맞는 문자열인지 확인한다.
+- isPromotionProduct
+  - 프로모션 제품인지 확인한다.
+- meetsPromotionCriteria
+  - 프로모션 적용 수량을 충족하는지 확인한다.
+- applyPromotion
+  - 프로모션을 적용한다.
 
 ## 로직
 1. 편의점 환영인사 출력하기
