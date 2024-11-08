@@ -9,6 +9,7 @@ public class ConvenienceStoreController {
         // 재고 관리하기
         posMachineController.initialize();
         ConvenienceStoreView.displayWelcomeGreeting();
+        posMachineController.getInventoryInformation();
         // 손님 받기
         // 영수증 출력하기
     }
