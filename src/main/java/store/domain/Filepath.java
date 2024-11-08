@@ -14,14 +14,14 @@ public class Filepath {
 
     public String getProductPath() {
         if (!hasProductsFile(productPath)) {
-            throw new RuntimeException(PathErrorMessage.IS_NOT_EXISTENCE_OF_PRODUCTS_FILE.getMessage());
+            throw new RuntimeException(PathErrorMessage.IS_NOT_EXISTENCE_OF_PRODUCTS_FILE.getFormattedMessage());
         }
         return productPath;
     }
 
     public String getPromotionPath() {
         if (!hasProductsFile(promotionPath)) {
-            throw new RuntimeException(PathErrorMessage.IS_NOT_EXISTENCE_OF_PRODUCTS_FILE.getMessage());
+            throw new RuntimeException(PathErrorMessage.IS_NOT_EXISTENCE_OF_PRODUCTS_FILE.getFormattedMessage());
         }
         return promotionPath;
     }

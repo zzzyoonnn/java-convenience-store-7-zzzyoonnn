@@ -46,7 +46,7 @@ public class PosMachineController {
                 promotions.add(promotion);
             }
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(RegistrationErrorMessage.IS_INVALID_FORMAT.getMessage());
+            throw new IllegalArgumentException(RegistrationErrorMessage.IS_INVALID_FORMAT.getFormattedMessage());
         }
 
         return promotions;
@@ -63,7 +63,7 @@ public class PosMachineController {
                 products.add(product);
             }
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(RegistrationErrorMessage.IS_INVALID_FORMAT.getMessage());
+            throw new IllegalArgumentException(RegistrationErrorMessage.IS_INVALID_FORMAT.getFormattedMessage());
         }
 
         return products;
@@ -74,7 +74,7 @@ public class PosMachineController {
             List<String> lines = Files.readAllLines(Paths.get(productsPath));
             return registerPromotion(lines);
         } catch (IOException e) {
-            throw new RuntimeException(RegistrationErrorMessage.CANNOT_READ_FILE.getMessage());
+            throw new RuntimeException(RegistrationErrorMessage.CANNOT_READ_FILE.getFormattedMessage());
         }
     }
 
@@ -83,7 +83,7 @@ public class PosMachineController {
             List<String> lines = Files.readAllLines(Paths.get(productsPath));
             return registerProduct(lines);
         } catch (IOException e) {
-            throw new RuntimeException(RegistrationErrorMessage.CANNOT_READ_FILE.getMessage());
+            throw new RuntimeException(RegistrationErrorMessage.CANNOT_READ_FILE.getFormattedMessage());
         }
     }
 }
