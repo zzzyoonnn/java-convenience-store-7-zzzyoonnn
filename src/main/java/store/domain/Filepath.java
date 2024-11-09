@@ -20,8 +20,8 @@ public class Filepath {
     }
 
     public String getPromotionPath() {
-        if (!hasProductsFile(promotionPath)) {
-            throw new RuntimeException(PathErrorMessage.IS_NOT_EXISTENCE_OF_PRODUCTS_FILE.getFormattedMessage());
+        if (!hasPromotionsFile(promotionPath)) {
+            throw new RuntimeException(PathErrorMessage.IS_NOT_EXISTENCE_OF_PROMOTIONS_FILE.getFormattedMessage());
         }
         return promotionPath;
     }
