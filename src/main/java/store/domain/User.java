@@ -1,12 +1,11 @@
 package store.domain;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import store.message.StaffErrorMessage;
 
 public class User {
     private String buyingInput;
-    private ArrayList<ShoppingCart>[] arrangeBuyingInput;
+    private ArrayList<ShoppingCart> arrangedBuyingMemo;
 
     public User() {
 
@@ -15,23 +14,21 @@ public class User {
     public User(String buyingInput) {
         isValidBuyingInput(buyingInput);
         this.buyingInput = buyingInput;
-        this.arrangeBuyingInput = arrangeBuyingItems();
+        this.arrangedBuyingMemo = arrangeBuyingItems();
     }
 
-    public ArrayList<ShoppingCart>[] arrangeBuyingItems() {
-        String arrangedBuyingInput = this.buyingInput.replaceAll("[\\[\\]]", "");
-        String[] splitProducts = arrangedBuyingInput.split(",");
+    public ArrayList<ShoppingCart> arrangeBuyingItems() {
+        String[] splitProducts = this.buyingInput.replaceAll("[\\[\\]]", "").split(",");
 
-        arrangeBuyingInput = new ArrayList[splitProducts.length];
+        arrangedBuyingMemo = new ArrayList<>();
         for (int index = 0; index < splitProducts.length; index++) {
             String[] splitProductAndQuantity = splitProducts[index].split("-");
             String productName = splitProductAndQuantity[0];
             int quantity = Integer.parseInt(splitProductAndQuantity[1]);
-            arrangeBuyingInput[index] = new ArrayList<>();
-            arrangeBuyingInput[index].add(new ShoppingCart(productName, quantity));
+            arrangedBuyingMemo.add(new ShoppingCart(productName, quantity));
         }
 
-        return arrangeBuyingInput;
+        return arrangedBuyingMemo;
     }
 
     public boolean isValidBuyingInput(String buyingInput) {
