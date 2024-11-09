@@ -318,6 +318,8 @@ N
   - 하이픈(-)을 기준으로 상품명과 수량을 구분한다.
 - findPromotionProduct
   - 구매할 상품 중 프로모션 제품이 있는지 확인한다.
+- isPromotionProduct
+  - 프로모션 제품인지 확인한다.
 - meetsPromotionCriteria
   - 프로모션 적용 수량을 충족하는지 확인한다.
 - applyPromotion
