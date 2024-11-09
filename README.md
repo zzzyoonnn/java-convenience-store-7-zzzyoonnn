@@ -312,6 +312,8 @@ N
   - 구매할 상품과 수량을 입력 받는다.
 - isValidBuyingInput
   - 사용자의 입력 문자열이 올바른 구매 입력 형식인지 확인한다.
+- initializeBuyingMeno
+  - 구매할 상품을 정리할 List를 초기화한다.
 - arrangeBuyingItems
   - 구매할 상품을 List로 정리한다.
 - isPromotionProduct
