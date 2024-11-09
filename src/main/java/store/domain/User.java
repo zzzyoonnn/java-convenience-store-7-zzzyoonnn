@@ -23,8 +23,7 @@ public class User {
     }
 
     public String[] splitProductAndQuantity(String productNameAndQuantity) {
-        String[] splitedHyphen = productNameAndQuantity.split("-");
-        return splitedHyphen;
+        return productNameAndQuantity.split("-");
     }
 
     public ArrayList<ShoppingCart> arrangeBuyingItems() {
