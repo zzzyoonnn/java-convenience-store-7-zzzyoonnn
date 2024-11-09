@@ -25,15 +25,19 @@ public class PosMachineController {
         PosMachineController.promotions = promotions;
     }
 
+    private static void isPromotionProduct(String userProduct, Product product) {
+        if (product.getName().equals(userProduct) && !product.getPromotion().equals("")) {
+            System.out.println(product.getName());
+        }
+    }
+
     public static void findPromotionProduct() {
         User user = User.getUser();
         ArrayList<ShoppingCart> userItems = user.userBuyingMemo();
         for (int i = 0; i < userItems.size(); i++) {
             String userProduct = userItems.get(i).getProductName();
             for (Product product : products) {
-                if (product.getName().equals(userProduct) && !product.getPromotion().equals("")) {
-                    System.out.println(product.getName());
-                }
+                isPromotionProduct(userProduct, product);
             }
         }
     }
