@@ -324,6 +324,12 @@ N
   - 프로모션 적용 수량을 충족하는지 확인한다.
 - applyPromotion
   - 프로모션을 적용한다.
+- displayReceiptTitle
+  - 영수증의 상품명, 수량, 금액 경계선을 출력한다.
+- displayReceiptBonus
+  - 영수증의 증정 경계선을 출력한다.
+- displayReceiptBoundary
+  - 영수증의 금액 경계선을 출력한다.
 
 ## 로직
 1. 편의점 환영인사 출력하기
