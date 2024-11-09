@@ -10,11 +10,11 @@ public class User {
     }
 
     public User(String buyingInput) {
-        isValidString(buyingInput);
+        isValidBuyingInput(buyingInput);
         this.buyingInput = buyingInput;
     }
 
-    public boolean isValidString(String buyingInput) {
+    public boolean isValidBuyingInput(String buyingInput) {
         String regex = "^\\[([가-힣]+-\\d+)\\]+(,\\[([가-힣]+-\\d+)\\])*$";
         if (!buyingInput.matches(regex)) {
             throw new IllegalArgumentException(StaffErrorMessage.IS_INVALID_STRING.getFormattedMessage());

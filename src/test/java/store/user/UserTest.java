@@ -15,7 +15,7 @@ public class UserTest {
     public void testValidBuyingInput() {
         String buyingInput = "[사이다-2],[감자칩-1]";
         User user = new User(buyingInput);
-        assertTrue(user.isValidString(buyingInput));
+        assertTrue(user.isValidBuyingInput(buyingInput));
     }
 
     @ParameterizedTest
@@ -25,7 +25,7 @@ public class UserTest {
         User user = new User();
 
         assertThrows(IllegalArgumentException.class, () -> {
-            user.isValidString(invalidBuyingInputs);
+            user.isValidBuyingInput(invalidBuyingInputs);
         });
     }
 }
