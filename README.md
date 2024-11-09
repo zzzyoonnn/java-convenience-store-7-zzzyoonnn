@@ -314,6 +314,8 @@ N
   - 사용자의 입력 문자열이 올바른 구매 입력 형식인지 확인한다.
 - arrangeBuyingItems
   - 구매할 상품을 List로 정리한다.
+- splitProductAndQuantity
+  - 하이픈(-)을 기준으로 상품명과 수량을 구분한다.
 - isPromotionProduct
   - 프로모션 제품인지 확인한다.
 - meetsPromotionCriteria
