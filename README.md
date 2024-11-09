@@ -310,8 +310,8 @@ N
   - 재고 정보를 출력한다.
 - requestProductNameAndQuantity
   - 구매할 상품과 수량을 입력 받는다.
-- isValidString
-  - 입력 양식에 맞는 문자열인지 확인한다.
+- isValidBuyingInput
+  - 사용자의 입력 문자열이 올바른 구매 입력 형식인지 확인한다.
 - isPromotionProduct
   - 프로모션 제품인지 확인한다.
 - meetsPromotionCriteria
