@@ -8,9 +8,12 @@ import java.util.List;
 import store.domain.Filepath;
 import store.domain.Product;
 import store.domain.Promotion;
+import store.domain.ShoppingCart;
+import store.domain.User;
 import store.message.RegistrationErrorMessage;
 
 public class PosMachineController {
+    private User user;
     public static List<Product> products;
     private static List<Promotion> promotions;
 
@@ -20,6 +23,19 @@ public class PosMachineController {
     public PosMachineController(List<Product> products, List<Promotion> promotions) {
         PosMachineController.products = products;
         PosMachineController.promotions = promotions;
+    }
+
+    public static void findPromotionProduct() {
+        User user = User.getUser();
+        ArrayList<ShoppingCart> userItems = user.userBuyingMemo();
+        for (int i = 0; i < userItems.size(); i++) {
+            String userProduct = userItems.get(i).getProductName();
+            for (Product product : products) {
+                if (product.getName().equals(userProduct) && !product.getPromotion().equals("")) {
+                    System.out.println(product.getName());
+                }
+            }
+        }
     }
 
     public static void initialize() {

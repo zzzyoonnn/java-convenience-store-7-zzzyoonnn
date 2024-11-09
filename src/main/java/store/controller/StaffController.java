@@ -1,25 +1,26 @@
 package store.controller;
 
-import camp.nextstep.edu.missionutils.Console;
 import store.domain.User;
-import store.view.StaffView;
 import store.view.PosMachineView;
+import store.view.StaffView;
 
 public class StaffController {
+    private static User user;
+
+    public StaffController() {
+    }
+
+    public StaffController(User user) {
+        this.user = user;
+    }
+
     public static void welcomeCustomer() {
         StaffView.displayWelcomeGreeting();
         PosMachineView.getInventoryInformation();
     }
 
     public static void requestProductNameAndQuantity() {
-        while (true) {
-            try {
-                StaffView.displayRequestProductNameAndQuantity();
-                User user = new User(Console.readLine());
-                break;
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-            }
-        }
+        StaffView.displayRequestProductNameAndQuantity();
+        user = User.enterUser();
     }
 }

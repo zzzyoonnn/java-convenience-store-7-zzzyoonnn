@@ -1,25 +1,40 @@
 package store.domain;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import store.message.StaffErrorMessage;
 
 public class User {
+    private static User user;
     private String buyingInput;
     private ArrayList<ShoppingCart> arrangedBuyingMemo;
 
     public User() {
-
     }
 
     public User(String buyingInput) {
         isValidBuyingInput(buyingInput);
         this.buyingInput = buyingInput;
         this.arrangedBuyingMemo = arrangeBuyingItems();
+    }
 
-        for (int i = 0; i < arrangedBuyingMemo.size(); i++) {
-            System.out.println(
-                    arrangedBuyingMemo.get(i).getProductName() + " " + arrangedBuyingMemo.get(i).getQuantity());
+    public static User getUser() {
+        return user;
+    }
+
+    public static User enterUser() {
+        while (true) {
+            try {
+                user = new User(Console.readLine());
+                return user;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
         }
+    }
+
+    public ArrayList<ShoppingCart> userBuyingMemo() {
+        return arrangedBuyingMemo;
     }
 
     public String[] splitProductAndQuantity(String productNameAndQuantity) {

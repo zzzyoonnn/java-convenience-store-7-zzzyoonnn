@@ -9,6 +9,7 @@ public class ConvenienceStoreController {
         // 재구매 요청 시
         staffController.welcomeCustomer();
         staffController.requestProductNameAndQuantity();
+        posMachineController.findPromotionProduct();
         // 영수증 출력하기
     }
 }

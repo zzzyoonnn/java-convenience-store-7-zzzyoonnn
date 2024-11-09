@@ -14,6 +14,15 @@ public class Product {
         this.quantity = quantity;
         this.promotion = promotion;
     }
+
+    public String getPromotion() {
+        return !promotion.equals("null") ? promotion : "";
+    }
+
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
         NumberFormat numberFormat = NumberFormat.getNumberInstance();
