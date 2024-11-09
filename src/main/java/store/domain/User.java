@@ -14,9 +14,9 @@ public class User {
         this.buyingInput = buyingInput;
     }
 
-    public boolean isValidString(String userCart) {
+    public boolean isValidString(String buyingInput) {
         String regex = "^\\[([가-힣]+-\\d+)\\]+(,\\[([가-힣]+-\\d+)\\])*$";
-        if (!userCart.matches(regex)) {
+        if (!buyingInput.matches(regex)) {
             throw new IllegalArgumentException(StaffErrorMessage.IS_INVALID_STRING.getFormattedMessage());
         }
 
