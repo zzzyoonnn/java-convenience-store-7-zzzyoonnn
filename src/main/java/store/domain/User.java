@@ -15,6 +15,16 @@ public class User {
         isValidBuyingInput(buyingInput);
         this.buyingInput = buyingInput;
         this.arrangedBuyingMemo = arrangeBuyingItems();
+
+        for (int i = 0; i < arrangedBuyingMemo.size(); i++) {
+            System.out.println(
+                    arrangedBuyingMemo.get(i).getProductName() + " " + arrangedBuyingMemo.get(i).getQuantity());
+        }
+    }
+
+    public String[] splitProductAndQuantity(String productNameAndQuantity) {
+        String[] splitedHyphen = productNameAndQuantity.split("-");
+        return splitedHyphen;
     }
 
     public ArrayList<ShoppingCart> arrangeBuyingItems() {
@@ -22,10 +32,8 @@ public class User {
 
         arrangedBuyingMemo = new ArrayList<>();
         for (int index = 0; index < splitProducts.length; index++) {
-            String[] splitProductAndQuantity = splitProducts[index].split("-");
-            String productName = splitProductAndQuantity[0];
-            int quantity = Integer.parseInt(splitProductAndQuantity[1]);
-            arrangedBuyingMemo.add(new ShoppingCart(productName, quantity));
+            String[] productAndQuantity = splitProductAndQuantity(splitProducts[index]);
+            arrangedBuyingMemo.add(new ShoppingCart(productAndQuantity[0], Integer.parseInt(productAndQuantity[1])));
         }
 
         return arrangedBuyingMemo;
