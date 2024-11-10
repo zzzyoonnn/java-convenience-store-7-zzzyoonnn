@@ -23,4 +23,12 @@ public class StaffController {
         StaffView.displayRequestProductNameAndQuantity();
         user = User.enterUser();
     }
+
+    public static void askCancelPromotion() {
+        StaffView.displayAskNoPromotionPayment();
+    }
+
+    public static void askAddPromotionalItem() {
+        StaffView.displayAskAddPromotionalItem();
+    }
 }
