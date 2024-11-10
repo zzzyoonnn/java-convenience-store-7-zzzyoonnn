@@ -18,6 +18,20 @@ public class User {
         this.arrangedBuyingMemo = arrangeBuyingItems();
     }
 
+    public static String answerQuestion(String answerQuestion) {
+        while (true) {
+            if (isValidAnswer(answerQuestion)) break;
+        }
+        return answerQuestion;
+    }
+
+    private static boolean isValidAnswer(String answerQuestion) {
+        if (!answerQuestion.equals("Y") && !answerQuestion.equals("N")) {
+            throw new IllegalArgumentException(StaffErrorMessage.IS_OTHER_ERROR.getFormattedMessage());
+        }
+        return true;
+    }
+
     public static User getUser() {
         return user;
     }
@@ -37,11 +51,11 @@ public class User {
         return arrangedBuyingMemo;
     }
 
-    public String[] splitProductAndQuantity(String productNameAndQuantity) {
+    private String[] splitProductAndQuantity(String productNameAndQuantity) {
         return productNameAndQuantity.split("-");
     }
 
-    public ArrayList<ShoppingCart> arrangeBuyingItems() {
+    private ArrayList<ShoppingCart> arrangeBuyingItems() {
         String[] splitProducts = this.buyingInput.replaceAll("[\\[\\]]", "").split(",");
 
         arrangedBuyingMemo = new ArrayList<>();
