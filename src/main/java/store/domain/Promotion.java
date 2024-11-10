@@ -14,4 +14,12 @@ public class Promotion {
         this.start_date = start_date;
         this.end_date = end_date;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getCriteria() {
+        return buy + get;
+    }
 }

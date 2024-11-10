@@ -1,6 +1,7 @@
 package store.domain;
 
 import java.text.NumberFormat;
+import java.util.HashSet;
 
 public class Product {
     private final String name;
@@ -13,6 +14,10 @@ public class Product {
         this.price = price;
         this.quantity = quantity;
         this.promotion = promotion;
+    }
+
+    public int getQuantity() {
+        return quantity;
     }
 
     public String getPromotion() {

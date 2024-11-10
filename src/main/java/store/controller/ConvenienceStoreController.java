@@ -1,5 +1,7 @@
 package store.controller;
 
+import store.view.ReceiptView;
+
 public class ConvenienceStoreController {
     static PosMachineController posMachineController = new PosMachineController();
     static StaffController staffController = new StaffController();
