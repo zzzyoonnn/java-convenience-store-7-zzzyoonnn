@@ -18,7 +18,7 @@ import store.message.StaffErrorMessage;
 public class PosMachineController {
     private User user;
     public static List<Product> products;
-    private static HashSet<String> productSet = new HashSet<>();
+    public static HashSet<String> productSet = new HashSet<>();
     private static List<Promotion> promotions;
 
     public PosMachineController() {
@@ -49,7 +49,7 @@ public class PosMachineController {
 ////        }
 ////    }
 
-    private static void isExistProduct(String userProduct) {
+    public static void isExistProduct(String userProduct) {
         try {
             if (!productSet.contains(userProduct)) {
                 throw new IllegalArgumentException(StaffErrorMessage.IS_NOT_EXIST.getFormattedMessage());
