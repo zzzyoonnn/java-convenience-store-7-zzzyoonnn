@@ -330,8 +330,8 @@ N
   - 고객의 구매 수량이 프로모션 적용 수량을 충족하는지 확인한다.
 - askCancelPromotion
   - 프로모션 적용을 취소할지 질문한다.
-- addQuantityUntilPromotionCriteria
-  - 프로모션 적용 가능 수량이 될때까지 추가한다.
+- displayAskNoPromotionPayment
+  - 프로모션 적용을 취소할지에 대한 메시지를 출력한다.
 - applyPromotion
   - 프로모션을 적용한다.
 - addPurchaseItem
