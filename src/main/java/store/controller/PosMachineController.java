@@ -29,17 +29,21 @@ public class PosMachineController {
         PosMachineController.promotions = promotions;
     }
 
-    private static void isPromotionApplicable(Product product, Promotion promotion) {
-        if (promotion.getCriteria() <= product.getQuantity()) {
-            // 프로모션 적용 가능
-        }
-        // 일반 결제
+    private static boolean meetsPromotionCriteria(int userQuantity, Promotion promotion) {
+        return promotion.getCriteria() <= userQuantity;
+    }
+
+    private static boolean isPromotionApplicable(Product product, Promotion promotion) {
+        return promotion.getCriteria() <= product.getQuantity();
     }
 
     private static void findPromotion(String userProduct, int userQuantity, Product product) {
         for (Promotion promotion : promotions) {
             if (product.getName().equals(userProduct) && product.getPromotion().equals(promotion.getName())) {
-                isPromotionApplicable(product, promotion);
+                if (isPromotionApplicable(product, promotion)) {
+                    meetsPromotionCriteria(userQuantity, promotion);
+                }
+                    // 일반 결제
             }
         }
     }
