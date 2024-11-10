@@ -326,16 +326,20 @@ N
   - 해당 제품의 프로모션을 확인한다.
 - isPromotionApplicable
   - 프로모션 적용 가능한지 확인한다.
-- meetsPromotionCriteria
-  - 고객의 구매 수량이 프로모션 적용 수량을 충족하는지 확인한다.
 - askCancelPromotion
   - 프로모션 적용을 취소할지 질문한다.
 - isValidAnswer
   - 점원의 질문에 대한 사용자의 입력 문자열이 올바른 입력인지 확인한다.
 - displayAskNoPromotionPayment
   - 프로모션 적용을 취소할지에 대한 메시지를 출력한다.
-- applyPromotion
-  - 프로모션을 적용한다.
+- askAddPromotionalItem
+  - 프로모션 증정품을 추가할지 질문한다.
+- displayAskAddPromotionalItem
+  - 프로모션 증정품을 추가할지에 대한 메시지를 출력한다.
+- hasSufficientPromotionStock
+  - 프로모션 적용 가능한 재고가 남아있는지 확인한다.
+- hasTakenPromotionItem
+  - 증정품까지 가져왔는지 확인한다.
 - addPurchaseItem
   - 결제 항목에 추가한다.
 - displayReceiptTitle
