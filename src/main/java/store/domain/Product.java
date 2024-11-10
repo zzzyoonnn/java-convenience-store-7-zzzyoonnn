@@ -1,7 +1,6 @@
 package store.domain;
 
 import java.text.NumberFormat;
-import java.util.HashSet;
 
 public class Product {
     private final String name;

@@ -21,6 +21,6 @@ public class PerchaseTest {
     @DisplayName("보유하고 있는 제품을 확인할 수 있다.")
     public void testIsExistProduct() {
         String userProduct = "콜라";
-        assertDoesNotThrow(() -> PosMachineController.isExistProduct(userProduct));
+        assertDoesNotThrow(() -> PosMachineController.isExistProduct(userProduct, 0));
     }
 }

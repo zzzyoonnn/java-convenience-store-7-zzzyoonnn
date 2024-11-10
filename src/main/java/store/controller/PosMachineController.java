@@ -29,32 +29,36 @@ public class PosMachineController {
         PosMachineController.promotions = promotions;
     }
 
-//    private static boolean meetsPromotionCriteria(String userProduct, int userQuantity, Product product,
-//                                                  List<Promotion> promotion) {
-//        if (product.getPromotion().equals("탄산2+1") && userQuantity >= 3 && product.getQuantity() >= 3) {  // 총 3개 필요
-//            System.out.println(product.getName());
-//        }
-//
-//        if (!product.getPromotion().equals("탄산2+1")) {  // 총 2개 필요
-//            System.out.println(product.getName());
-//        }
-//
-//        return false;
-////    }
-////
-////    private static void isPromotionProduct(String userProduct, int userQuantity, Product product,
-////                                           List<Promotion> promotion) {
-////        if (!product.getPromotion().isEmpty()) {
-////            meetsPromotionCriteria(userProduct, userQuantity, product, promotion);
-////        }
-////    }
+    private static boolean meetsPromotionCriteria(String userProduct, int userQuantity, Product product) {
+        for (Promotion promotion : promotions) {
 
-    public static void isExistProduct(String userProduct) {
+        }
+        if (product.getPromotion().equals("탄산2+1") && userQuantity >= 3 && product.getQuantity() >= 3) {  // 총 3개 필요
+            System.out.println(product.getName());
+        }
+
+        if (!product.getPromotion().equals("탄산2+1")) {  // 총 2개 필요
+            System.out.println(product.getName());
+        }
+
+        return false;
+    }
+
+    private static void isPromotionProduct(String userProduct, int userQuantity) {
+        for (Product product : products) {
+            if (!product.getPromotion().isEmpty()) {
+                meetsPromotionCriteria(userProduct, userQuantity, product);
+            }
+        }
+        // 결제하기
+    }
+
+    public static void isExistProduct(String userProduct, int userQuantity) {
         try {
             if (!productSet.contains(userProduct)) {
                 throw new IllegalArgumentException(StaffErrorMessage.IS_NOT_EXIST.getFormattedMessage());
             }
-            // 프로모션 적용 가능한지 확인하기
+            isPromotionProduct(userProduct, userQuantity);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             User.enterUser();
@@ -67,7 +71,7 @@ public class PosMachineController {
         for (int i = 0; i < userItems.size(); i++) {
             String userProduct = userItems.get(i).getProductName();
             int userQuantity = userItems.get(i).getQuantity();
-            isExistProduct(userProduct);
+            isExistProduct(userProduct, userQuantity);
             for (Product product : products) {
             }
         }
