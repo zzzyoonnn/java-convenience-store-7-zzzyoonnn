@@ -24,7 +24,6 @@ public class PromotionController {
     }
 
     private static void meetsPromotionCriteria(int userQuantity, Promotion promotion) {
-        System.out.println("meetsPromotionCriteria");
         if (promotion.getBuy() > userQuantity) {
             StaffController.askCancelPromotion();
         }
@@ -33,30 +32,22 @@ public class PromotionController {
 
     private static void isPromotionApplicable(String userProduct, int userQuantity, Product product,
                                               Promotion promotion) {
-        System.out.println("isPromotionApplicable");
-        if (promotion.getBuy() <= product.getQuantity()) {
-            meetsPromotionCriteria(userQuantity, promotion);
+        while (userQuantity > 0) {
+            // hasSufficientPromotionStock 구현
         }
-        // 일반 구매 및 제품 제거 중 선택하기
     }
 
     private static void findPromotion(String userProduct, int userQuantity, Product product) {
-        System.out.println("findPromotion");
 
         for (Promotion promotion : promotions) {
             if (product.getName().equals(userProduct) && product.getPromotion().equals(promotion.getName())) {
-                System.out.println("findPromotion");
                 isPromotionApplicable(userProduct, userQuantity, product, promotion);
             }
         }
     }
 
     private static void isPromotionProduct(String userProduct, int userQuantity) {
-        System.out.println("isPromotionProduct");
-        System.out.println(products.size());
-
         for (Product product : products) {
-            System.out.println(product.getPromotion());
             if (!product.getPromotion().isEmpty()) {
                 findPromotion(userProduct, userQuantity, product);
             }
