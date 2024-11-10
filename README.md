@@ -330,6 +330,8 @@ N
   - 고객의 구매 수량이 프로모션 적용 수량을 충족하는지 확인한다.
 - askCancelPromotion
   - 프로모션 적용을 취소할지 질문한다.
+- isValidAnswer
+  - 점원의 질문에 대한 사용자의 입력 문자열이 올바른 입력인지 확인한다.
 - displayAskNoPromotionPayment
   - 프로모션 적용을 취소할지에 대한 메시지를 출력한다.
 - applyPromotion
