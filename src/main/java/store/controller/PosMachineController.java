@@ -29,25 +29,25 @@ public class PosMachineController {
         PosMachineController.promotions = promotions;
     }
 
-    private static boolean meetsPromotionCriteria(String userProduct, int userQuantity, Product product) {
+    private static void isPromotionApplicable(Product product, Promotion promotion) {
+        if (promotion.getCriteria() <= product.getQuantity()) {
+            // 프로모션 적용 가능
+        }
+        // 일반 결제
+    }
+
+    private static void findPromotion(String userProduct, int userQuantity, Product product) {
         for (Promotion promotion : promotions) {
-
+            if (product.getName().equals(userProduct) && product.getPromotion().equals(promotion.getName())) {
+                isPromotionApplicable(product, promotion);
+            }
         }
-        if (product.getPromotion().equals("탄산2+1") && userQuantity >= 3 && product.getQuantity() >= 3) {  // 총 3개 필요
-            System.out.println(product.getName());
-        }
-
-        if (!product.getPromotion().equals("탄산2+1")) {  // 총 2개 필요
-            System.out.println(product.getName());
-        }
-
-        return false;
     }
 
     private static void isPromotionProduct(String userProduct, int userQuantity) {
         for (Product product : products) {
             if (!product.getPromotion().isEmpty()) {
-                meetsPromotionCriteria(userProduct, userQuantity, product);
+                findPromotion(userProduct, userQuantity, product);
             }
         }
         // 결제하기
