@@ -18,16 +18,22 @@ public class User {
         this.arrangedBuyingMemo = arrangeBuyingItems();
     }
 
-    public static String answerQuestion(String answerQuestion) {
+    public static String answerQuestion() {
+        String answerQuestion = "";
         while (true) {
-            if (isValidAnswer(answerQuestion)) break;
+            try {
+                answerQuestion = Console.readLine();
+                if (isValidAnswer(answerQuestion)) break;
+            } catch (IllegalStateException e) {
+                System.out.println(e.getMessage());
+            }
         }
         return answerQuestion;
     }
 
     private static boolean isValidAnswer(String answerQuestion) {
         if (!answerQuestion.equals("Y") && !answerQuestion.equals("N")) {
-            throw new IllegalArgumentException(StaffErrorMessage.IS_OTHER_ERROR.getFormattedMessage());
+            throw new IllegalStateException(StaffErrorMessage.IS_OTHER_ERROR.getFormattedMessage());
         }
         return true;
     }

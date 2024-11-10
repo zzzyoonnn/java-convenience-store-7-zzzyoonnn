@@ -1,5 +1,6 @@
 package store.controller;
 
+import camp.nextstep.edu.missionutils.Console;
 import store.domain.User;
 import store.view.PosMachineView;
 import store.view.StaffView;
@@ -26,6 +27,8 @@ public class StaffController {
 
     public static void askCancelPromotion() {
         StaffView.displayAskNoPromotionPayment();
+        String userAnswer = User.answerQuestion();
+        System.out.println(userAnswer);
     }
 
     public static void askAddPromotionalItem() {

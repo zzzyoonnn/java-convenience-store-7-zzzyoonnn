@@ -36,9 +36,9 @@ public class PromotionController {
 
     private static void isPromotionApplicable(String userProduct, int userQuantity, Product product,
                                               Promotion promotion) {
-        while (userQuantity > 0) {
+        //while (userQuantity > 0) {
             hasSufficientPromotionStock(userProduct, userQuantity, product, promotion);
-        }
+        //}
     }
 
     private static void findPromotion(String userProduct, int userQuantity, Product product) {
