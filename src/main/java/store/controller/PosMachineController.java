@@ -3,82 +3,24 @@ package store.controller;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import store.domain.Filepath;
 import store.domain.Product;
 import store.domain.Promotion;
-import store.domain.ShoppingCart;
 import store.domain.User;
 import store.message.RegistrationErrorMessage;
-import store.message.StaffErrorMessage;
 
 public class PosMachineController {
     private User user;
     public static List<Product> products;
-    public static HashSet<String> productSet = new HashSet<>();
+    private static HashSet<String> productSet;
     private static List<Promotion> promotions;
 
-    public PosMachineController() {
-    }
-
-    public PosMachineController(List<Product> products, List<Promotion> promotions) {
-        PosMachineController.products = products;
-        PosMachineController.promotions = promotions;
-    }
-
-    private static boolean meetsPromotionCriteria(int userQuantity, Promotion promotion) {
-        return promotion.getCriteria() <= userQuantity;
-    }
-
-    private static boolean isPromotionApplicable(Product product, Promotion promotion) {
-        return promotion.getCriteria() <= product.getQuantity();
-    }
-
-    private static void findPromotion(String userProduct, int userQuantity, Product product) {
-        for (Promotion promotion : promotions) {
-            if (product.getName().equals(userProduct) && product.getPromotion().equals(promotion.getName())) {
-                if (isPromotionApplicable(product, promotion)) {
-                    meetsPromotionCriteria(userQuantity, promotion);
-                }
-                    // 일반 결제
-            }
-        }
-    }
-
-    private static void isPromotionProduct(String userProduct, int userQuantity) {
-        for (Product product : products) {
-            if (!product.getPromotion().isEmpty()) {
-                findPromotion(userProduct, userQuantity, product);
-            }
-        }
-        // 결제하기
-    }
-
-    public static void isExistProduct(String userProduct, int userQuantity) {
-        try {
-            if (!productSet.contains(userProduct)) {
-                throw new IllegalArgumentException(StaffErrorMessage.IS_NOT_EXIST.getFormattedMessage());
-            }
-            isPromotionProduct(userProduct, userQuantity);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            User.enterUser();
-        }
-    }
-
-    public static void findPromotionProduct() {
-        User user = User.getUser();
-        ArrayList<ShoppingCart> userItems = user.userBuyingMemo();
-        for (int i = 0; i < userItems.size(); i++) {
-            String userProduct = userItems.get(i).getProductName();
-            int userQuantity = userItems.get(i).getQuantity();
-            isExistProduct(userProduct, userQuantity);
-            for (Product product : products) {
-            }
-        }
+    public PosMachineController(List<Product> products, List<Promotion> promotions, HashSet<String> productSet) {
+        this.products = products;
+        this.promotions = promotions;
+        this.productSet = productSet;
     }
 
     public static void initialize() {
@@ -95,8 +37,6 @@ public class PosMachineController {
     }
 
     public static List<Promotion> registerPromotion(List<String> lines) {
-        List<Promotion> promotions = new ArrayList<>();
-
         try {
             for (int currentLine = 1; currentLine < lines.size(); currentLine++) {
                 String[] content = lines.get(currentLine).trim().split(",");
@@ -112,8 +52,6 @@ public class PosMachineController {
     }
 
     public static List<Product> registerProduct(List<String> lines) {
-        List<Product> products = new ArrayList<>();
-
         try {
             for (int currentLine = 1; currentLine < lines.size(); currentLine++) {
                 String[] content = lines.get(currentLine).trim().split(",");
