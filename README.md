@@ -322,10 +322,22 @@ N
   - 구매할 상품 중 프로모션 제품이 있는지 확인한다.
 - isPromotionProduct
   - 프로모션 제품인지 확인한다.
+- findPromotion
+  - 해당 제품의 프로모션을 확인한다.
+- validatePromotionStock
+  - 프로모션 적용시 필요로 하는 재고 확인한다.
+- isPromotionApplicable
+  - 프로모션 적용 가능한지 확인한다.
 - meetsPromotionCriteria
-  - 프로모션 적용 수량을 충족하는지 확인한다.
+  - 고객의 구매 수량이 프로모션 적용 수량을 충족하는지 확인한다.
+- askAddQuantityUntilPromotionCriteria
+  - 프로모션 적용 가능 수량만큼 추가할지 질문한다.
+- addQuantityUntilPromotionCriteria
+  - 프로모션 적용 가능 수량이 될때까지 추가한다.
 - applyPromotion
   - 프로모션을 적용한다.
+- addPurchaseItem
+  - 결제 항목에 추가한다.
 - displayReceiptTitle
   - 영수증의 상품명, 수량, 금액 경계선을 출력한다.
 - displayReceiptBonus
