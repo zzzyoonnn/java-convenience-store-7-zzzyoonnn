@@ -23,17 +23,21 @@ public class PromotionController {
         this.productSet = productSet;
     }
 
-    private static void meetsPromotionCriteria(int userQuantity, Promotion promotion) {
-        if (promotion.getBuy() > userQuantity) {
+    private static void hasSufficientPromotionStock(String userProduct, int userQuantity, Product product,
+                                                    Promotion promotion) {
+        if (promotion.getBuy() + promotion.getGet() <= product.getQuantity()) {
+            // hasTakenPromotionalItem
+        }
+
+        if (promotion.getBuy() + promotion.getGet() > product.getQuantity()) {
             StaffController.askCancelPromotion();
         }
-        // 구매하기
     }
 
     private static void isPromotionApplicable(String userProduct, int userQuantity, Product product,
                                               Promotion promotion) {
         while (userQuantity > 0) {
-            // hasSufficientPromotionStock 구현
+            hasSufficientPromotionStock(userProduct, userQuantity, product, promotion);
         }
     }
 
