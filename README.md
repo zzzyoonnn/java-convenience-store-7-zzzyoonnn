@@ -324,14 +324,12 @@ N
   - 프로모션 제품인지 확인한다.
 - findPromotion
   - 해당 제품의 프로모션을 확인한다.
-- validatePromotionStock
-  - 프로모션 적용시 필요로 하는 재고 확인한다.
 - isPromotionApplicable
   - 프로모션 적용 가능한지 확인한다.
 - meetsPromotionCriteria
   - 고객의 구매 수량이 프로모션 적용 수량을 충족하는지 확인한다.
-- askAddQuantityUntilPromotionCriteria
-  - 프로모션 적용 가능 수량만큼 추가할지 질문한다.
+- askCancelPromotion
+  - 프로모션 적용을 취소할지 질문한다.
 - addQuantityUntilPromotionCriteria
   - 프로모션 적용 가능 수량이 될때까지 추가한다.
 - applyPromotion
