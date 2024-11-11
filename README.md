@@ -348,10 +348,10 @@ N
   - 증정품까지 가져왔는지 확인한다.
 - purchaseNotPromotion
   - 프로모션 재고가 없어도 결제를 진행한다.
-- removeNotPromotionProduct
-  - 프로모션 재고가 없으면 결제하지 않는다.
 - addPromotionalItem
   - 프로모션 증정품을 추가한다.
+- containsReceipt
+  - 구매목록에 존재하는 제품인지 확인한다.
 - addReceipt
   - 구매목록에 존재하지 않는 제품이라면 영수증에 추가한다.
 - UpdateReceipt
