@@ -352,6 +352,10 @@ N
   - 프로모션 재고가 없으면 결제하지 않는다.
 - addPromotionalItem
   - 프로모션 증정품을 추가한다.
+- addReceipt
+  - 구매목록에 존재하지 않는 제품이라면 영수증에 추가한다.
+- UpdateReceipt
+  - 구매목록에 존재하는 제품이라면 영수증을 갱신한다.
 - addPurchaseItem
   - 결제 항목에 추가한다.
 - displayReceiptTitle
