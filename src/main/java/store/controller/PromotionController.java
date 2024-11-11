@@ -26,8 +26,12 @@ public class PromotionController {
         this.receiptMap = receiptMap;
     }
 
+    private static boolean isInReceipt(String userProduct) {
+        return receiptMap.containsKey(userProduct);
+    }
+
     private static void hasTakenPromotionalItem(String userProduct, int userQuantity, Product product,
-                                                Promotion promotion) {
+                                                Promotion promotion, boolean isInReceipt) {
         if (userQuantity == promotion.getBuy()) {
             if (StaffController.askAddPromotionalItem()) {
 //                int promotionQuantity = promotion.getGet();
@@ -46,10 +50,10 @@ public class PromotionController {
     }
 
     private static void isPromotionApplicable(String userProduct, int userQuantity, Product product,
-                                              Promotion promotion) {
+                                              Promotion promotion, boolean isInReceipt) {
         //while (userQuantity > 0) {
         if (hasSufficientPromotionStock(product, promotion)) {
-            hasTakenPromotionalItem(userProduct, userQuantity, product, promotion);
+            hasTakenPromotionalItem(userProduct, userQuantity, product, promotion, isInReceipt);
         }
         if (!hasSufficientPromotionStock(product, promotion)) {
             StaffController.askCancelPromotion();
@@ -71,30 +75,30 @@ public class PromotionController {
         return compareDates(nowDate, promotionStartDate, promotionEndDate);
     }
 
-    private static void findPromotion(String userProduct, int userQuantity, Product product) {
+    private static void findPromotion(String userProduct, int userQuantity, Product product, boolean isInReceipt) {
         for (Promotion promotion : promotions) {
             if (checkDate(promotion) && product.getName().equals(userProduct) && product.getPromotion()
                     .equals(promotion.getName())) {
-                isPromotionApplicable(userProduct, userQuantity, product, promotion);
+                isPromotionApplicable(userProduct, userQuantity, product, promotion, isInReceipt);
             }
         }
     }
 
-    private static void isPromotionProduct(String userProduct, int userQuantity) {
+    private static void isPromotionProduct(String userProduct, int userQuantity, boolean isInReceipt) {
         for (Product product : products) {
             if (!product.getPromotion().isEmpty()) {
-                findPromotion(userProduct, userQuantity, product);
+                findPromotion(userProduct, userQuantity, product, isInReceipt);
             }
         }
         // 결제하기
     }
 
-    public static void isExistProduct(String userProduct, int userQuantity) {
+    public static void isExistProduct(String userProduct, int userQuantity, boolean isInReceipt) {
         try {
             if (!productSet.contains(userProduct)) {
                 throw new IllegalArgumentException(StaffErrorMessage.IS_NOT_EXIST.getFormattedMessage());
             }
-            isPromotionProduct(userProduct, userQuantity);
+            isPromotionProduct(userProduct, userQuantity, isInReceipt(userProduct));
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             User.enterUser();
