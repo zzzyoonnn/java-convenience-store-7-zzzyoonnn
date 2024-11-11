@@ -1,6 +1,5 @@
 package store.controller;
 
-import camp.nextstep.edu.missionutils.Console;
 import store.domain.User;
 import store.view.PosMachineView;
 import store.view.StaffView;
@@ -25,13 +24,21 @@ public class StaffController {
         user = User.enterUser();
     }
 
+    public static boolean listenUserAnswer() {
+        return (User.answerQuestion().equals("Y"));
+    }
+
     public static void askCancelPromotion() {
         StaffView.displayAskNoPromotionPayment();
-        String userAnswer = User.answerQuestion();
-        System.out.println(userAnswer);
+        listenUserAnswer();
+        // true -> 일반 결제
+        // false -> 제거
     }
 
     public static void askAddPromotionalItem() {
         StaffView.displayAskAddPromotionalItem();
+        listenUserAnswer();
+        // true -> 증정품 추가
+        // false -> 추가 X
     }
 }
