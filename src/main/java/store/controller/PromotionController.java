@@ -34,6 +34,15 @@ public class PromotionController {
 
     }
 
+    private static void addPurchaseItem(String userProduct, Product product,
+                                        Promotion promotion) {
+        if (receiptManager.containsReceipt(userProduct)) {
+            // UpdateReceipt
+
+        }
+        // addReceipt
+    }
+
     private static void hasTakenPromotionalItem(String userProduct, Product product,
                                                 Promotion promotion) {
         if (userQuantity == promotion.getBuy()) {
@@ -49,11 +58,11 @@ public class PromotionController {
         return promotion.getBuy() + promotion.getGet() <= product.getQuantity();
     }
 
-    private static void isPromotionApplicable(String userProduct, int userQuantity, Product product,
+    private static void isPromotionApplicable(String userProduct, Product product,
                                               Promotion promotion) {
         //while (userQuantity > 0) {
         if (hasSufficientPromotionStock(product, promotion)) {
-            hasTakenPromotionalItem(userProduct, userQuantity, product, promotion);
+            hasTakenPromotionalItem(userProduct, product, promotion);
             return;
         }
         if (!hasSufficientPromotionStock(product, promotion)) {
@@ -76,30 +85,30 @@ public class PromotionController {
         return compareDates(nowDate, promotionStartDate, promotionEndDate);
     }
 
-    private static void findPromotion(String userProduct, int userQuantity, Product product) {
+    private static void findPromotion(String userProduct, Product product) {
         for (Promotion promotion : promotions) {
             if (checkDate(promotion) && product.getName().equals(userProduct) && product.getPromotion()
                     .equals(promotion.getName())) {
-                isPromotionApplicable(userProduct, userQuantity, product, promotion);
+                isPromotionApplicable(userProduct, product, promotion);
             }
         }
     }
 
-    private static void isPromotionProduct(String userProduct, int userQuantity) {
+    private static void isPromotionProduct(String userProduct) {
         for (Product product : products) {
             if (!product.getPromotion().isEmpty()) {
-                findPromotion(userProduct, userQuantity, product);
+                findPromotion(userProduct, product);
             }
         }
         // 결제하기
     }
 
-    public static void isExistProduct(String userProduct, int userQuantity) {
+    public static void isExistProduct(String userProduct) {
         try {
             if (!productSet.contains(userProduct)) {
                 throw new IllegalArgumentException(StaffErrorMessage.IS_NOT_EXIST.getFormattedMessage());
             }
-            isPromotionProduct(userProduct, userQuantity);
+            isPromotionProduct(userProduct);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             User.enterUser();
@@ -112,7 +121,7 @@ public class PromotionController {
         for (int i = 0; i < userItems.size(); i++) {
             String userProduct = userItems.get(i).getProductName();
             userQuantity = userItems.get(i).getQuantity();
-            isExistProduct(userProduct, userQuantity);
+            isExistProduct(userProduct);
         }
     }
 }

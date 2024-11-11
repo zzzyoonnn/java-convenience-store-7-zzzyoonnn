@@ -21,6 +21,10 @@ public class ReceiptManagement {
         receiptMap.put(productName, newReceipt);
     }
 
+    public boolean containsReceipt(String productName) {
+        return receiptMap.containsKey(productName);
+    }
+
     public Receipt getReceipt(String productName) {
         return receiptMap.get(productName);
     }
