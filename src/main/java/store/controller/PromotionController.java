@@ -12,36 +12,40 @@ import store.domain.User;
 import store.message.StaffErrorMessage;
 
 public class PromotionController {
+    private static int userQuantity;
     private User user;
     public static List<Product> products;
     public static HashSet<String> productSet;
     private static List<Promotion> promotions;
     private static ReceiptManagement receiptManager;
 
-    public PromotionController(List<Product> products, List<Promotion> promotions, HashSet<String> productSet, ReceiptManagement receiptManager) {
+    public PromotionController(List<Product> products, List<Promotion> promotions, HashSet<String> productSet,
+                               ReceiptManagement receiptManager) {
         this.products = products;
         this.promotions = promotions;
         this.productSet = productSet;
         this.receiptManager = receiptManager;
     }
 
-    private static void hasTakenPromotionalItem(String userProduct, int userQuantity, Product product,
+    private static void addPromotionalItem(Product product,
+                                           Promotion promotion) {
+        userQuantity += promotion.getGet();
+        product.setQuantity(product.getQuantity() - promotion.getGet());
+
+    }
+
+    private static void hasTakenPromotionalItem(String userProduct, Product product,
                                                 Promotion promotion) {
         if (userQuantity == promotion.getBuy()) {
             if (StaffController.askAddPromotionalItem()) {
-//                int promotionQuantity = promotion.getGet();
-//                userQuantity -= promotionQuantity;
-//                product.setQuantity(product.getQuantity() - promotionQuantity);
-                // 증정품 추가
-                //receiptMap.put(userProduct, receiptMap.getOrDefault())
+                addPromotionalItem(product, promotion);
             }
-            // 증정품 추가 X
         }
         // Recipt에 추가하기
     }
 
     private static boolean hasSufficientPromotionStock(Product product,
-                                                    Promotion promotion) {
+                                                       Promotion promotion) {
         return promotion.getBuy() + promotion.getGet() <= product.getQuantity();
     }
 
@@ -107,10 +111,8 @@ public class PromotionController {
         ArrayList<ShoppingCart> userItems = user.userBuyingMemo();
         for (int i = 0; i < userItems.size(); i++) {
             String userProduct = userItems.get(i).getProductName();
-            int userQuantity = userItems.get(i).getQuantity();
+            userQuantity = userItems.get(i).getQuantity();
             isExistProduct(userProduct, userQuantity);
-            for (Product product : products) {
-            }
         }
     }
 }
