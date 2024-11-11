@@ -2,10 +2,12 @@ package store.controller;
 
 import camp.nextstep.edu.missionutils.DateTimes;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import store.domain.Product;
 import store.domain.Promotion;
+import store.domain.Receipt;
 import store.domain.ShoppingCart;
 import store.domain.User;
 import store.message.StaffErrorMessage;
@@ -15,11 +17,13 @@ public class PromotionController {
     public static List<Product> products;
     public static HashSet<String> productSet;
     private static List<Promotion> promotions;
+    private static HashMap<String, Receipt> receiptMap;
 
-    public PromotionController(List<Product> products, List<Promotion> promotions, HashSet<String> productSet) {
+    public PromotionController(List<Product> products, List<Promotion> promotions, HashSet<String> productSet, HashMap<String, Receipt> receiptMap) {
         this.products = products;
         this.promotions = promotions;
         this.productSet = productSet;
+        this.receiptMap = receiptMap;
     }
 
     private static void hasTakenPromotionalItem(String userProduct, int userQuantity, Product product,
