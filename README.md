@@ -338,6 +338,8 @@ N
   - 프로모션 적용을 취소할지에 대한 메시지를 출력한다.
 - askAddPromotionalItem
   - 프로모션 증정품을 추가할지 질문한다.
+- listenUserAnswer
+  - 사용자의 대답을 듣는다.
 - displayAskAddPromotionalItem
   - 프로모션 증정품을 추가할지에 대한 메시지를 출력한다.
 - hasSufficientPromotionStock
