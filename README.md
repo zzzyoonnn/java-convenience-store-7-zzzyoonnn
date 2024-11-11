@@ -346,6 +346,12 @@ N
   - 프로모션 적용 가능한 재고가 남아있는지 확인한다.
 - hasTakenPromotionalItem
   - 증정품까지 가져왔는지 확인한다.
+- purchaseNotPromotion
+  - 프로모션 재고가 없어도 결제를 진행한다.
+- removeNotPromotionProduct
+  - 프로모션 재고가 없으면 결제하지 않는다.
+- addPromotionalItem
+  - 프로모션 증정품을 추가한다.
 - addPurchaseItem
   - 결제 항목에 추가한다.
 - displayReceiptTitle
