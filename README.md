@@ -326,6 +326,8 @@ N
   - 해당 제품의 프로모션을 확인한다.
 - checkDate
   - 프로모션 기간에 속하는지 확인한다.
+- compareDates
+  - 현재 날짜와 프로모션 기간을 비교한다.
 - isPromotionApplicable
   - 프로모션 적용 가능한지 확인한다.
 - askCancelPromotion
