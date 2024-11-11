@@ -324,6 +324,8 @@ N
   - 프로모션 제품인지 확인한다.
 - findPromotion
   - 해당 제품의 프로모션을 확인한다.
+- checkDate
+  - 프로모션 기간에 속하는지 확인한다.
 - isPromotionApplicable
   - 프로모션 적용 가능한지 확인한다.
 - askCancelPromotion
@@ -338,7 +340,7 @@ N
   - 프로모션 증정품을 추가할지에 대한 메시지를 출력한다.
 - hasSufficientPromotionStock
   - 프로모션 적용 가능한 재고가 남아있는지 확인한다.
-- hasTakenPromotionItem
+- hasTakenPromotionalItem
   - 증정품까지 가져왔는지 확인한다.
 - addPurchaseItem
   - 결제 항목에 추가한다.
