@@ -352,8 +352,6 @@ N
   - 프로모션 재고가 없으면 결제하지 않는다.
 - addPromotionalItem
   - 프로모션 증정품을 추가한다.
-- isInReceipt
-  - 결제 항목에 포함되어 있는 상품인지 확인한다.
 - addPurchaseItem
   - 결제 항목에 추가한다.
 - displayReceiptTitle
