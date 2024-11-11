@@ -10,6 +10,7 @@ import store.domain.Filepath;
 import store.domain.Product;
 import store.domain.Promotion;
 import store.domain.Receipt;
+import store.domain.ReceiptManagement;
 import store.domain.User;
 import store.message.RegistrationErrorMessage;
 
@@ -18,13 +19,13 @@ public class PosMachineController {
     public static List<Product> products;
     private static HashSet<String> productSet;
     private static List<Promotion> promotions;
-    private static HashMap<String, Receipt> receiptMap;
+    private static ReceiptManagement receiptManager;
 
-    public PosMachineController(List<Product> products, List<Promotion> promotions, HashSet<String> productSet, HashMap<String, Receipt> receiptMap) {
+    public PosMachineController(List<Product> products, List<Promotion> promotions, HashSet<String> productSet, ReceiptManagement receiptManager) {
         this.products = products;
         this.promotions = promotions;
         this.productSet = productSet;
-        this.receiptMap = receiptMap;
+        this.receiptManager = receiptManager;
     }
 
     public static void initialize() {

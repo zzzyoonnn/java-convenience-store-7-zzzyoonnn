@@ -3,13 +3,13 @@ package store.perchase;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static store.controller.PromotionController.productSet;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import store.controller.PromotionController;
+import store.domain.ReceiptManagement;
 
 public class PerchaseTest {
     private PromotionController promotionController;
@@ -21,7 +21,7 @@ public class PerchaseTest {
         productSet.add("사이다");
         productSet.add("팝콘");
 
-        promotionController = new PromotionController(List.of(), List.of(), productSet, new HashMap<>());
+        promotionController = new PromotionController(List.of(), List.of(), productSet, new ReceiptManagement());
     }
 
     @Test

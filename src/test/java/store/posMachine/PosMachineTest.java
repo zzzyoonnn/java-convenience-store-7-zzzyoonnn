@@ -6,12 +6,15 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import store.controller.PosMachineController;
 import store.domain.Filepath;
 import store.domain.Product;
+import store.domain.ReceiptManagement;
 
 public class PosMachineTest {
     @Test
@@ -19,10 +22,9 @@ public class PosMachineTest {
     public void testDisplayInventoryInformation() {
         Filepath filepath = new Filepath("src/test/java/store/posMachine/productsTest.md", "");
         List<Product> products = PosMachineController.createProductInformation(filepath.getProductPath());
-        PosMachineController.products = products;
+        PosMachineController posMachineController = new PosMachineController(products, List.of(), new HashSet<>(), new ReceiptManagement());
 
         String productsList = PosMachineController.getInventoryInformation();
-
         assertThat(productsList.split("\n")).containsExactly(
                 "- 콜라 1,000원 10개 탄산2+1",
                 "- 콜라 1,000원 10개",
