@@ -28,17 +28,13 @@ public class StaffController {
         return (User.answerQuestion().equals("Y"));
     }
 
-    public static void askCancelPromotion() {
+    public static boolean askCancelPromotion() {
         StaffView.displayAskNoPromotionPayment();
-        listenUserAnswer();
-        // true -> 일반 결제
-        // false -> 제거
+        return listenUserAnswer();
     }
 
-    public static void askAddPromotionalItem() {
+    public static boolean askAddPromotionalItem() {
         StaffView.displayAskAddPromotionalItem();
-        listenUserAnswer();
-        // true -> 증정품 추가
-        // false -> 추가 X
+        return listenUserAnswer();
     }
 }

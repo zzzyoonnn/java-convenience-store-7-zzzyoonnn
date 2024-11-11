@@ -5,7 +5,7 @@ import java.text.NumberFormat;
 public class Product {
     private final String name;
     private final int price;
-    private final int quantity;
+    private int quantity;
     private final String promotion;
 
     public Product(String name, int price, int quantity, String promotion) {
@@ -13,6 +13,10 @@ public class Product {
         this.price = price;
         this.quantity = quantity;
         this.promotion = promotion;
+    }
+
+    public int setQuantity(int quantity) {
+        return this.quantity = quantity;
     }
 
     public int getQuantity() {

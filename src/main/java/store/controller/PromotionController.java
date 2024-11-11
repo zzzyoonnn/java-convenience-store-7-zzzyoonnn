@@ -1,8 +1,6 @@
 package store.controller;
 
 import camp.nextstep.edu.missionutils.DateTimes;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -11,7 +9,6 @@ import store.domain.Promotion;
 import store.domain.ShoppingCart;
 import store.domain.User;
 import store.message.StaffErrorMessage;
-import store.view.StaffView;
 
 public class PromotionController {
     private User user;
@@ -28,26 +25,34 @@ public class PromotionController {
     private static void hasTakenPromotionalItem(String userProduct, int userQuantity, Product product,
                                                 Promotion promotion) {
         if (userQuantity == promotion.getBuy()) {
-            StaffController.askAddPromotionalItem();
+            if (StaffController.askAddPromotionalItem()) {
+//                int promotionQuantity = promotion.getGet();
+//                userQuantity -= promotionQuantity;
+//                product.setQuantity(product.getQuantity() - promotionQuantity);
+                // 증정품 추가
+            }
+            // 증정품 추가 X
         }
         // Recipt에 추가하기
     }
 
-    private static void hasSufficientPromotionStock(String userProduct, int userQuantity, Product product,
+    private static boolean hasSufficientPromotionStock(Product product,
                                                     Promotion promotion) {
-        if (promotion.getBuy() + promotion.getGet() <= product.getQuantity()) {
-            // hasTakenPromotionalItem
-        }
-
-        if (promotion.getBuy() + promotion.getGet() > product.getQuantity()) {
-            StaffController.askCancelPromotion();
-        }
+        return promotion.getBuy() + promotion.getGet() <= product.getQuantity();
     }
 
     private static void isPromotionApplicable(String userProduct, int userQuantity, Product product,
                                               Promotion promotion) {
         //while (userQuantity > 0) {
-        hasSufficientPromotionStock(userProduct, userQuantity, product, promotion);
+        if (hasSufficientPromotionStock(product, promotion)) {
+            hasTakenPromotionalItem(userProduct, userQuantity, product, promotion);
+        }
+        if (!hasSufficientPromotionStock(product, promotion)) {
+            StaffController.askCancelPromotion();
+            // 일반 결제
+            // return;
+        }
+        userQuantity = 0;
         //}
     }
 
@@ -64,7 +69,8 @@ public class PromotionController {
 
     private static void findPromotion(String userProduct, int userQuantity, Product product) {
         for (Promotion promotion : promotions) {
-            if (checkDate(promotion) && product.getName().equals(userProduct) && product.getPromotion().equals(promotion.getName())) {
+            if (checkDate(promotion) && product.getName().equals(userProduct) && product.getPromotion()
+                    .equals(promotion.getName())) {
                 isPromotionApplicable(userProduct, userQuantity, product, promotion);
             }
         }
