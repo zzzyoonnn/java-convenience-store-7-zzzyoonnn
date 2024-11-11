@@ -11,6 +11,7 @@ import store.domain.Promotion;
 import store.domain.ShoppingCart;
 import store.domain.User;
 import store.message.StaffErrorMessage;
+import store.view.StaffView;
 
 public class PromotionController {
     private User user;
@@ -26,7 +27,10 @@ public class PromotionController {
 
     private static void hasTakenPromotionalItem(String userProduct, int userQuantity, Product product,
                                                 Promotion promotion) {
-
+        if (userQuantity == promotion.getBuy()) {
+            StaffController.askAddPromotionalItem();
+        }
+        // Recipt에 추가하기
     }
 
     private static void hasSufficientPromotionStock(String userProduct, int userQuantity, Product product,
