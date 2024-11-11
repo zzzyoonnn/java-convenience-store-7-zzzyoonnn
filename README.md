@@ -386,4 +386,50 @@ N
 ## 디렉토리 구조
 
 ````
+├── main
+│   ├── java
+│   │   └── store
+│   │       ├── Application.java
+│   │       ├── controller
+│   │       │   ├── ConvenienceStoreController.java
+│   │       │   ├── PosMachineController.java
+│   │       │   ├── PromotionController.java
+│   │       │   └── StaffController.java
+│   │       ├── domain
+│   │       │   ├── Filepath.java
+│   │       │   ├── Product.java
+│   │       │   ├── Promotion.java
+│   │       │   ├── Receipt.java
+│   │       │   ├── ReceiptManagement.java
+│   │       │   ├── ShoppingCart.java
+│   │       │   └── User.java
+│   │       ├── message
+│   │       │   ├── ErrorMessage.java
+│   │       │   ├── PathErrorMessage.java
+│   │       │   ├── ReceiptMessage.java
+│   │       │   ├── RegistrationErrorMessage.java
+│   │       │   ├── StaffErrorMessage.java
+│   │       │   └── StaffMessage.java
+│   │       └── view
+│   │           ├── PosMachineView.java
+│   │           ├── ReceiptView.java
+│   │           └── StaffView.java
+│   └── resources
+│       ├── products.md
+│       └── promotions.md
+└── test
+    └── java
+        └── store
+            ├── ApplicationTest.java
+            ├── filepath
+            │   └── FilepathTest.java
+            ├── perchase
+            │   └── PerchaseTest.java
+            ├── posMachine
+            │   ├── PosMachineTest.java
+            │   ├── productsErrorTest.md
+            │   └── productsTest.md
+            └── user
+                └── UserTest.java
+
 ````
