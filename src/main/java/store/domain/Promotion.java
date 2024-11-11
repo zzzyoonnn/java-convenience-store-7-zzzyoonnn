@@ -26,4 +26,12 @@ public class Promotion {
     public int getGet() {
         return get;
     }
+
+    public String getStart_date() {
+        return start_date;
+    }
+
+    public String getEnd_date() {
+        return end_date;
+    }
 }

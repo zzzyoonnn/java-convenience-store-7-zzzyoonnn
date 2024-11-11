@@ -47,22 +47,20 @@ public class PromotionController {
         //}
     }
 
-    private static boolean compareDates() {
-        return false;
+    private static boolean compareDates(String nowDate, String promotionStartDate, String promotionEndDate) {
+        return nowDate.compareTo(promotionStartDate) >= 0 && nowDate.compareTo(promotionEndDate) <= 0;
     }
 
-    private static void checkDate(Promotion promotion) {
+    private static boolean checkDate(Promotion promotion) {
         String nowDate = DateTimes.now().toString().split("T")[0];
-        String[] nowDateParts = nowDate.split("-");
-        String[] promotionStartDate = promotion.getStart_date().split("-");
-        String[] promotionEndDate = promotion.getEnd_date().split("-");
-        //compareDates(nowDateParts, promotionStartDate, promotionEndDate);
+        String promotionStartDate = promotion.getStart_date();
+        String promotionEndDate = promotion.getEnd_date();
+        return compareDates(nowDate, promotionStartDate, promotionEndDate);
     }
 
     private static void findPromotion(String userProduct, int userQuantity, Product product) {
         for (Promotion promotion : promotions) {
-            checkDate();
-            if (product.getName().equals(userProduct) && product.getPromotion().equals(promotion.getName())) {
+            if (checkDate(promotion) && product.getName().equals(userProduct) && product.getPromotion().equals(promotion.getName())) {
                 isPromotionApplicable(userProduct, userQuantity, product, promotion);
             }
         }
